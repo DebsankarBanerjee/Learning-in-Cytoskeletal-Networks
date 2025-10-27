@@ -1,0 +1,54 @@
+compile = gfortran
+#
+obj_main=code.o rhs.o deriv.o strain.o \
+sigma_active.o sigma_elastic.o source.o \
+initial.o pbc.o info.o free_energy.o \
+flux.o limiter.o correlation.o fw.o rk.o
+
+obj_parameter=mod_param.o
+#
+result.exe:$(obj_main) $(obj_parameter)
+	$(compile) $(obj_main) $(obj_parameter) -o result.exe -lm
+####
+code.o:code.f90 $(obj_parameter)
+	$(compile) -c code.f90 $(obj_parameter)
+rhs.o:rhs.f90 $(obj_parameter)
+	$(compile) -c rhs.f90 $(obj_parameter)
+deriv.o:deriv.f90 $(obj_parameter)
+	$(compile) -c deriv.f90 $(obj_parameter)
+pbc.o:pbc.f90 $(obj_parameter)
+	$(compile) -c pbc.f90 $(obj_parameter)
+strain.o:strain.f90 $(obj_parameter)
+	$(compile) -c strain.f90 $(obj_parameter)
+sigma_active.o:sigma_active.f90 $(obj_parameter)
+	$(compile) -c sigma_active.f90 $(obj_parameter)
+sigma_elastic.o:sigma_elastic.f90 $(obj_parameter)
+	$(compile) -c sigma_elastic.f90 $(obj_parameter)
+source.o:source.f90 $(obj_parameter)
+	$(compile) -c source.f90 $(obj_parameter)
+flux.o:flux.f90 $(obj_parameter)
+	$(compile) -c flux.f90 $(obj_parameter)
+limiter.o:limiter.f90 $(obj_parameter)
+	$(compile) -c limiter.f90 $(obj_parameter)
+#
+initial.o:initial.f90 $(obj_parameter)
+	$(compile) -c initial.f90 $(obj_parameter)
+#
+info.o:info.f90 $(obj_parameter)
+	$(compile) -c info.f90 $(obj_parameter)
+
+correlation.o:correlation.f90 $(obj_parameter)
+	$(compile) -c correlation.f90 $(obj_parameter)
+
+free_energy.o:free_energy.f90 $(obj_parameter)
+	$(compile) -c free_energy.f90 $(obj_parameter)
+fw.o:fw.f90 $(obj_parameter)
+	$(compile) -c fw.f90 $(obj_parameter)
+rk.o:rk.f90 $(obj_parameter)
+	$(compile) -c rk.f90 $(obj_parameter)
+#
+mod_param.o:mod_param.f90
+	$(compile) -c mod_param.f90
+#
+clean:
+	rm -f *.o *.mod *.MOD
