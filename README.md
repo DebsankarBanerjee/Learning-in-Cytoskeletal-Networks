@@ -1,5 +1,136 @@
 # Learning-in-Cytoskeletal-Networks
 
+````{"id":"68124","variant":"standard","title":"Usage Instructions Section for GitHub README"}
+## 🚀 Usage Instructions
+
+### 🧩 Requirements
+
+To compile and run this code, you need:
+
+| Dependency | Description | Tested Version |
+|-------------|--------------|----------------|
+| **GNU Fortran (`gfortran`)** | Fortran compiler | 10.3 or newer |
+| **GNU Make** | Build automation tool | 4.2 or newer |
+| **Bash shell** | For running the provided script | Default on Linux/macOS |
+| *(Optional)* Python 3 + Matplotlib | For post-analysis and visualization (coming soon) | 3.10+ |
+
+Verify installations:
+```bash
+gfortran --version
+make --version
+```
+
+---
+
+### 🏗️ Compilation
+
+Compile the modular Fortran code using the provided Makefile in the `code/` directory:
+```bash
+cd code
+make
+```
+
+This creates the executable:
+```
+result.exe
+```
+
+Clean build artifacts with:
+```bash
+make clean
+```
+
+---
+
+### ▶️ Running a Single Simulation
+
+The executable requires a file `parameter.txt` specifying source–target indices and simulation parameters.
+
+Run it manually:
+```bash
+cd code
+./result.exe < parameter.txt
+```
+
+Simulation output files will be saved to the `../data/` directory:
+- `time_error.txt` — Time evolution of learning error  
+- `trained_network_k.txt` — Final spring constants  
+- `trained_network_xy.txt` — Node positions of the trained network  
+
+---
+
+### 🔁 Batch Simulations with the Shell Script
+
+The `run_modular_code.sh` script automates compilation and runs multiple simulations for each source–target configuration listed in `stdata.txt`.
+
+#### Steps:
+
+1. Prepare `stdata.txt` in the main directory with each line listing one source–target pair:
+   ```
+   3 8 15 20
+   2 6 9 12
+   ```
+
+2. Run the batch process:
+   ```bash
+   bash run_modular_code.sh
+   ```
+
+   The script will:
+   - Create a `data/` directory (if missing)
+   - Compile and execute the Fortran code for each line in `stdata.txt`
+   - Save outputs as:
+     - `data/te_<count>.txt` — time vs. error
+     - `data/tr_k_<count>.txt` — trained spring constants
+     - `data/tr_net_<count>.txt` — final network configuration
+
+3. Track progress in real time; each simulation’s duration is printed using the `time` command.
+
+---
+
+### 📊 Output Directory Structure
+
+Example layout after running the full batch:
+```
+data/
+├── te_1.txt
+├── tr_k_1.txt
+├── tr_net_1.txt
+├── te_2.txt
+├── tr_k_2.txt
+└── tr_net_2.txt
+```
+
+---
+
+### ⚙️ Notes
+
+- All simulation parameters (e.g., `dt`, `alpha`, `zeta`, `taus`, `tauf`) are defined in `mod_param.f90`.  
+  Modify them before compiling to change physical or learning behavior.
+- Ensure the `Makefile` correctly compiles all `.f90` modules in order.
+- The shell script assumes a Unix-like environment (Linux/macOS).  
+  Windows users can run it via **WSL** or **Git Bash**.
+
+---
+
+### 🧠 Example Full Workflow
+
+```bash
+# Create data directory
+mkdir -p data
+
+# Run all simulations
+bash run_modular_code.sh
+
+# View first few lines of an output file
+head data/te_1.txt
+```
+
+This completes one full learning cycle for all source–target configurations defined in `stdata.txt`.
+
+---
+````
+
 
 ---
 
