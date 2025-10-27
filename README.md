@@ -13,8 +13,6 @@ To compile and run this code, you need:
 | **Bash shell** | For running the provided script | Default on Linux/macOS |
 | *(Optional)* Python 3 + Matplotlib | For post-analysis and visualization (coming soon) | 3.10+ |
 
-```
-
 ---
 
 ### Compilation
@@ -49,7 +47,8 @@ cd code
 
 Simulation output files will be saved to the `../data/` directory:
 - `time_error.txt` — Time evolution of learning error  
-- `trained_network_k.txt` — Final spring constants  
+- `trained_network_k.txt` — Final spring constants
+- `trained_network_l0.txt` — Final rest lengths  
 - `trained_network_xy.txt` — Node positions of the trained network  
 
 ---
@@ -77,6 +76,7 @@ The `run_modular_code.sh` script automates compilation and runs multiple simulat
    - Save outputs as:
      - `data/te_<count>.txt` — time vs. error
      - `data/tr_k_<count>.txt` — trained spring constants
+     - `data/tr_l0_<count>.txt` — trained rest length
      - `data/tr_net_<count>.txt` — final network configuration
 
 3. Track progress in real time; each simulation’s duration is printed using the `time` command.
