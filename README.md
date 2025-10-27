@@ -1,8 +1,8 @@
 # Learning-in-Cytoskeletal-Networks
 
-## 🚀 Usage Instructions
+## Usage Instructions
 
-### 🧩 Requirements
+### Requirements
 
 To compile and run this code, you need:
 
@@ -13,15 +13,11 @@ To compile and run this code, you need:
 | **Bash shell** | For running the provided script | Default on Linux/macOS |
 | *(Optional)* Python 3 + Matplotlib | For post-analysis and visualization (coming soon) | 3.10+ |
 
-Verify installations:
-```bash
-gfortran --version
-make --version
 ```
 
 ---
 
-### 🏗️ Compilation
+### Compilation
 
 Compile the modular Fortran code using the provided Makefile in the `code/` directory:
 ```bash
@@ -41,7 +37,7 @@ make clean
 
 ---
 
-### ▶️ Running a Single Simulation
+### Running a Single Simulation
 
 The executable requires a file `parameter.txt` specifying source–target indices and simulation parameters.
 
@@ -58,7 +54,7 @@ Simulation output files will be saved to the `../data/` directory:
 
 ---
 
-### 🔁 Batch Simulations with the Shell Script
+### Batch Simulations with the Shell Script
 
 The `run_modular_code.sh` script automates compilation and runs multiple simulations for each source–target configuration listed in `stdata.txt`.
 
@@ -87,7 +83,7 @@ The `run_modular_code.sh` script automates compilation and runs multiple simulat
 
 ---
 
-### 📊 Output Directory Structure
+### Output Directory Structure
 
 Example layout after running the full batch:
 ```
@@ -102,7 +98,7 @@ data/
 
 ---
 
-### ⚙️ Notes
+### Notes
 
 - All simulation parameters (e.g., `dt`, `alpha`, `zeta`, `taus`, `tauf`) are defined in `mod_param.f90`.  
   Modify them before compiling to change physical or learning behavior.
@@ -112,7 +108,7 @@ data/
 
 ---
 
-### 🧠 Example Full Workflow
+### Example Full Workflow
 
 ```bash
 # Create data directory
@@ -133,7 +129,7 @@ This completes one full learning cycle for all source–target configurations de
 
 ---
 
-## ⚙️ Core Program Files
+## Core Program Files
 
 ### **`main_code`**
 - **Program:** `code`
@@ -149,7 +145,7 @@ This completes one full learning cycle for all source–target configurations de
 
 ---
 
-## 🧩 Functional Modules
+## Functional Modules
 
 ### **`initialize_all`**
 Initializes arrays, constants, node positions, spring constants, and time variables.
@@ -178,7 +174,7 @@ Computes the instantaneous and cumulative error (difference between target and a
 
 ---
 
-## 🔄 Learning Modules
+## Learning Modules
 
 ### **`learning_update_l0`**
 Updates the **rest lengths (`l₀`)** of springs according to local stress feedback.  
@@ -190,7 +186,7 @@ Implements adaptive reinforcement or weakening.
 
 ---
 
-## ⚡ Strain Driving and Dynamics
+## Strain Driving and Dynamics
 
 ### **`sawtooth_step`**
 Implements a **time-dependent sawtooth strain** on the target edge:
@@ -200,7 +196,7 @@ Computes and stores target forces for both `x` and `y` components.
 
 ---
 
-## 🧮 Energy and Diagnostics
+## Energy and Diagnostics
 
 ### **`config_energy`**
 Computes total network elastic energy:
@@ -219,7 +215,7 @@ Finds the maximum internal stress (akin to maximum “myosin” activity) in the
 
 ---
 
-## 🧩 Utility Routines
+## Utility Routines
 
 ### **`get_skipflag`**
 Marks edges that should not be updated during learning (e.g., source or target edges).
@@ -229,7 +225,7 @@ Simplified version of the above, checking only for source edges.
 
 ---
 
-## 🧠 Parameter and Control Module
+## Parameter and Control Module
 
 ### **`mod_param`**
 Contains all global variables and parameters:
@@ -241,7 +237,7 @@ Acts as the shared data environment for all subroutines.
 
 ---
 
-## 🧾 Shell Script
+## Shell Script
 
 ### **`run_modular_code.sh`**
 Main automation script:
@@ -265,7 +261,7 @@ Contains all generated output:
 
 ---
 
-## 🧭 Next Steps
+## Next Steps
 
 The next phase will include:
 - **Data analysis scripts (Python/Matplotlib)**
