@@ -5,7 +5,7 @@
 
 ## ⚙️ Core Program Files
 
-### **`main_code.f90`**
+### **`main_code`**
 - **Program:** `code`
 - **Description:** Central driver that reads parameters, initializes the network, applies source strain, performs relaxation and learning cycles, and saves outputs.
 - **Key Calls:**  
@@ -21,40 +21,40 @@
 
 ## 🧩 Functional Modules
 
-### **`initialize_all.f90`**
+### **`initialize_all`**
 Initializes arrays, constants, node positions, spring constants, and time variables.
 
-### **`get_configuration.f90`**
+### **`get_configuration`**
 Reads network topology and geometry (nodes, neighbors, and rest lengths) from input files.
 
-### **`create_source_target.f90`**
+### **`create_source_target`**
 Specifies which edges are **source** (driven) and **target** (learned) links.
 
-### **`apply_source.f90`**
+### **`apply_source`**
 Applies an initial static deformation or source strain before dynamic learning begins.
 
-### **`compute_spring_forces.f90`**
+### **`compute_spring_forces`**
 Computes elastic forces on each node using current positions, rest lengths, and spring constants.  
 Called by all relaxation routines.
 
-### **`relax_with_source.f90`**
+### **`relax_with_source`**
 Iteratively relaxes the system with only the source strain applied (used to create a free equilibrium state).
 
-### **`relax_with_source_target.f90`**
+### **`relax_with_source_target`**
 Performs relaxation while both source and target constraints are applied, including learning updates.
 
-### **`calculate_error.f90`**
+### **`calculate_error`**
 Computes the instantaneous and cumulative error (difference between target and achieved strain).
 
 ---
 
 ## 🔄 Learning Modules
 
-### **`learning_update_l0.f90`**
+### **`learning_update_l0`**
 Updates the **rest lengths (`l₀`)** of springs according to local stress feedback.  
 Skips source and target edges to avoid direct modification.
 
-### **`learning_update_k.f90`**
+### **`learning_update_k`**
 Updates the **spring constants (`k`)** based on product of local stress and strain.  
 Implements adaptive reinforcement or weakening.
 
@@ -62,7 +62,7 @@ Implements adaptive reinforcement or weakening.
 
 ## ⚡ Strain Driving and Dynamics
 
-### **`sawtooth_step.f90`**
+### **`sawtooth_step`**
 Implements a **time-dependent sawtooth strain** on the target edge:
 - During ramp-up: strain increases linearly with time (`t ≤ tauf`)
 - During ramp-down: strain decreases (`tauf < t ≤ tauf + taus`)
@@ -72,36 +72,36 @@ Computes and stores target forces for both `x` and `y` components.
 
 ## 🧮 Energy and Diagnostics
 
-### **`config_energy.f90`**
+### **`config_energy`**
 Computes total network elastic energy:
 \[
 E = \frac{1}{2} \sum k_{ij}(l_{ij} - l_{0,ij})^2
 \]
 
-### **`total_ldof.f90`**
+### **`total_ldof`**
 Calculates total change in learning degrees of freedom (LDFs), both in `l₀` and `k`.
 
-### **`get_centerofmass.f90`**
+### **`get_centerofmass`**
 Computes center-of-mass coordinates of the network.
 
-### **`get_max_myosin.f90`**
+### **`get_max_myosin`**
 Finds the maximum internal stress (akin to maximum “myosin” activity) in the system.
 
 ---
 
 ## 🧩 Utility Routines
 
-### **`get_skipflag.f90`**
+### **`get_skipflag`**
 Marks edges that should not be updated during learning (e.g., source or target edges).
 
-### **`get_skipflag_source.f90`**
+### **`get_skipflag_source`**
 Simplified version of the above, checking only for source edges.
 
 ---
 
 ## 🧠 Parameter and Control Module
 
-### **`mod_param.f90`**
+### **`mod_param`**
 Contains all global variables and parameters:
 - Simulation constants (`dt`, `Niter`, etc.)
 - Network arrays (`positionx`, `springConstant`, `eqLength`, etc.)
