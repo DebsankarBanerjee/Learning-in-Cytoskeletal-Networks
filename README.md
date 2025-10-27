@@ -124,7 +124,6 @@ head data/te_1.txt
 This completes one full learning cycle for all source–target configurations defined in `stdata.txt`.
 
 ---
-````
 
 
 ---
