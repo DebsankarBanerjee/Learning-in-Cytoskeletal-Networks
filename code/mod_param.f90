@@ -31,7 +31,7 @@ module mod_param
 
   integer, parameter :: Nsawtooth = int((tauf + taus) / dt)  ! Period of sawtooth modulation
 
-  integer, parameter :: Niter = 70                ! Number of learning iterations
+  integer, parameter :: Niter = 700                ! Number of learning iterations
   integer, parameter :: iterSteps = 1              ! Time steps per learning iteration
 
   integer, parameter :: nsave = 50                 ! Number of times data is saved
