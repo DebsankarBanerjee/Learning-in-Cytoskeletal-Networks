@@ -1,6 +1,5 @@
 # Learning-in-Cytoskeletal-Networks
 
-````{"id":"68124","variant":"standard","title":"Usage Instructions Section for GitHub README"}
 ## 🚀 Usage Instructions
 
 ### 🧩 Requirements
