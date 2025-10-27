@@ -255,7 +255,8 @@ Lists source-target node pairs for each simulation run (one per line).
 ### **`data/` Directory**
 Contains all generated output:
 - `te_*.txt` — time evolution of learning error  
-- `tr_k_*.txt` — final trained spring constants  
+- `tr_k_*.txt` — final trained spring constants
+- `tr_l0_*.txt` — final trained rest length  
 - `tr_net_*.txt` — final network geometry and positions  
 
 ---
