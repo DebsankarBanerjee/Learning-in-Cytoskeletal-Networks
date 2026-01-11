@@ -294,3 +294,9 @@ This script reads multiple output files from the `data/` directory (e.g., `te_1.
 Developed by **Deb Sankar Banerjee**  
 For research on **self-organization and physical learning in mechanical networks**.
 
+## 📖 Citation
+
+For more details of the learning mechanism please see:
+
+> *Deb S. Banerjee, Martin J. Falk, Margaret L. Gardel, Aleksandra M. Walczak, Thierry Mora, and Suriyanarayanan Vaikuntanathan (2025). Learning via Mechanosensitivity and Activity in Cytoskeletal Networks. PRX Life.* [[Link to Paper](https://journals.aps.org/prxlife/abstract/10.1103/s7tg-6q4q)]
+
