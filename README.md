@@ -286,7 +286,7 @@ This script reads multiple output files from the `data/` directory (e.g., `te_1.
    - Display a plot of average training error with error bars.  
    - Save the processed data (`x_values`, average, SEM) to `output.txt`.
 
-````
+
 
 ---
 
